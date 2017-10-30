@@ -23,8 +23,13 @@ using namespace std;
 
 
 void ParticleFilter::init(double x, double y, double theta, double std[]) {
+	//num_particles = 5;
+	//num_particles = 10;
    	num_particles = 50;
-    	default_random_engine gen;
+	//num_particles = 100;  
+	//num_particles = 150;    	
+	
+	default_random_engine gen;
     
     	normal_distribution<double> dist_x(x, std[0]);
     	normal_distribution<double> dist_y(y, std[1]);
@@ -83,7 +88,7 @@ void ParticleFilter::prediction(double delta_t, double std_pos[], double velocit
         	particles[i].theta = next_theta;
     	}
 	
-	cout << "PREDICTION DONE ....\n";
+	//cout << "PREDICTION DONE ....\n";
 }
 
 void ParticleFilter::dataAssociation(std::vector<LandmarkObs> predicted, std::vector<LandmarkObs>& observations) {
@@ -157,7 +162,7 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
  
     	}
 	
-	cout << "UPDATE WEIGHTS DONE ....\n";
+	//cout << "UPDATE WEIGHTS DONE ....\n";
 
 	
 
@@ -181,7 +186,7 @@ void ParticleFilter::resample() {
     	// ready for next iteration
     	particles = newParticles;
 	weights = newWeights; 
-	cout << "RESAMPLE DONE ....\n";
+	//cout << "RESAMPLE DONE ....\n";
 }
 
 Particle ParticleFilter::SetAssociations(Particle particle, std::vector<int> associations, std::vector<double> sense_x, std::vector<double> sense_y)
